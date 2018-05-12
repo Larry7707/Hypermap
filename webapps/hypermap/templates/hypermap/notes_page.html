@@ -1,0 +1,31 @@
+{% extends "hypermap/global_page.html" %}
+{% load static from staticfiles %}
+{% block title %}My Profile{% endblock %}
+{% block content %}
+<br>
+
+<div class="row">
+<div class="col-md-3">
+  <div class="box" id="profile-box" style="margin-left:120px;margin-right:-10px;">
+    <ul style="margin-left:10px;">
+      <li>
+        <img src="{%static 'hypermap/images/user_icon.png' %}" class="profile-global" id="{{user.id}}">
+      </li>
+      <li>
+          <h5> {{user.first_name}} {{user.last_name}} </h5>
+          <p> {{user.email}} </p>
+      </li>
+
+
+    </ul>
+  </div>
+</div>
+<div class="col-md-9">
+  <div class="box" id="cmu-campus" style="min-height: 300px; margin-right: 120px;">
+    <ul id="notes-list"></ul>
+  </div>
+</div>
+{% endblock %}
+{% block jsfile %}
+<script src="{% static 'hypermap/js/note_page.js' %}" type="text/javascript"></script>
+{% endblock %}

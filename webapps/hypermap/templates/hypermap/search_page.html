@@ -1,0 +1,31 @@
+{% extends "hypermap/global_page.html" %}
+{% load static from staticfiles %}
+{% block title %}Search{% endblock %}
+{% block content %}
+<br>
+
+<div class="box" id="search-box" style="min-height: 300px; margin-right: 120px; margin-left: 120px;">
+  <form method="post" id="search-form">
+  {% csrf_token %}
+   {% for field in form.visible_fields %}
+        {{field.label}} {{field}}
+        {% if field.errors %}
+          <p class="error">{{field.errors}}</p>
+        {% endif %}
+    {% endfor %}
+    {% for field in form.hidden_fields %}
+        {{field}}
+        {% if field.errors %}
+          <p class="error">{{field.errors}}</p>
+        {% endif %}
+    {% endfor %}
+  <button id="post-btn" class="button" type="submit" align="right-post">Search</button>
+  </form>
+  <ul id="search-result">
+  </ul>
+</div>
+{% endblock %}
+{% block jsfile %}
+
+<script src="{% static 'hypermap/js/search.js' %}" type="text/javascript"></script>
+{% endblock %}

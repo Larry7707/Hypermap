@@ -1,0 +1,46 @@
+{% extends "hypermap/login_page.html" %}
+{% load static from staticfiles %}
+{% block title %}Registration{% endblock %}
+{% block bodystyle %}
+body{
+            background-image: url("{% static 'hypermap/images/reg-background.png' %}");
+            background-size: 70%;
+            background-repeat: no-repeat;
+            background-color: #eee2c6;
+            background-position: 170px 0px;
+        }
+{% endblock %}
+
+
+{% block content1 %}
+<br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br><br>
+<div class="box">
+    {% for error in form.non_field_errors %}
+        <p style="color: red">
+            {{error}}
+        </p>
+    {% endfor %}
+	<form class="form-signin" method="POST">
+		{% for field in form.visible_fields %}
+			{{field}}
+			{% if field.errors %}
+			<p style="color: red">{{field.errors}}</p>
+			{% endif %}
+		{% endfor %}
+		{% for field in form.hidden_fields %}
+			{{field}}
+			{% if field.errors %}
+			<p style="color: red">{{field.errors}}</p>
+			{% endif %}
+		{% endfor %}
+		<button class="button3" type="submit">Start My Hypermap</button>
+		{% csrf_token %}
+	</form>
+</div>
+{% endblock %}
+{% block content2 %}{% endblock %}

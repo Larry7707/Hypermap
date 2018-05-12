@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Google Map</h1>
+
+<div id="googleMap" style="width:50%;height:400px;"></div>
+
+<script>
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBelEVCZyRl-yf72Hnex47q2eZo9rtUJNk&callback=myMap"></script>
+<script src="{% static 'hypermap/jquery-2.1.4.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'hypermap/hypermap.js' %}" type="text/javascript"></script>
+
+</body>
+</html>
